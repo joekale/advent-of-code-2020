@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
 
   std::vector<int> vals;
   std::string line;
-  std::ifstream input("../../d1/d1-1.txt");
+  std::ifstream input("../../d1/d1.txt");
   if (input.is_open()) {
     while (getline(input, line)) {
       vals.push_back(std::stoi(line));
