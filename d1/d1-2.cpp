@@ -1,4 +1,3 @@
-#include "cmdline.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -8,7 +7,7 @@ int main(int argc, char *argv[]) {
 
   std::vector<int> vals;
   std::string line;
-  std::ifstream input("../../d1/d1-1.txt");
+  std::ifstream input("../../d1/d1.txt");
   if (input.is_open()) {
     while (getline(input, line)) {
       vals.push_back(std::stoi(line));
@@ -23,15 +22,24 @@ int main(int argc, char *argv[]) {
     for(int j = 0; j < vals.size(); j++) {
       if ( i == j)
         continue;
-      
-      int vali = vals.at(i);
-      int valj = vals.at(j);
 
-      if (vali + valj == 2020) {
-        std::cout << vali << " x " << valj << " = " << vali*valj << std::endl;
-        found = true;
-        break;
+      for (int k = 0; k < vals.size(); k++) {
+        if ( i == k || j == k)
+          continue;
+
+        int vali = vals.at(i);
+        int valj = vals.at(j);
+        int valk = vals.at(k);
+
+        if (vali + valj + valk == 2020) {
+          std::cout << vali << " x " << valj << " x " << valk << " = " << vali*valj*valk << std::endl;
+          found = true;
+          break;
+        }
       }
+
+      if(found)
+        break;
     }
 
     if(found)
